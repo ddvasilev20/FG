@@ -1,1 +1,28 @@
+#include <iostream>
 
+using namespace std;
+
+int main()
+{
+  float array[100]
+  
+  flaot dentisty;
+  float sum = 0;
+  float bodyVolume;
+  float mass;
+  
+  cout << "The power of Archimedes." << endl << endl;
+  cout << "Calculate the force of ejection of a body in a liquid by selecting a liquid and entering the volume or mass" << endl << endl;
+
+  cout << "Choose a liquid:" << endl;
+
+  cout << "1 Water" << endl;
+  cout << "2 Sea water" << endl;
+  cout << "3 Oil" << endl;
+  cout << "4 Gasoline" << endl;
+  cout << "5 Mercury" << endl;
+  cout << "6 Methanol" << endl;
+  
+  int selectedLiquid;
+  cin >> selectedLiquid;
+}
