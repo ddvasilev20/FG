@@ -2,8 +2,6 @@
 
 using namespace std;
 
-
-
 float ArchimedeanFormulaFirstWay(float p, float V)
 {
     float F;
@@ -25,21 +23,17 @@ float ArchimedeanFormulaSecondWay(float m)
     return F;
 }
 
-
-
 int main()
 {
-
+    float array[100];
 
     float dentisty;
     float sum = 0;
     float bodyVolume;
     float mass;
 
-
-
     cout << "The power of Archimedes." << endl << endl;
-    cout << "Calculate the force of pushing a body into a liquid by writing the volume of the body and choosing the liquid." << endl << endl;
+    cout << "Calculate the force of ejection of a body in a liquid by selecting a liquid and entering the volume or mass" << endl << endl;
 
     cout << "Choose a liquid:" << endl;
 
@@ -52,8 +46,6 @@ int main()
 
     int selectedLiquid;
     cin >> selectedLiquid;
-
-
 
     switch (selectedLiquid)
     {
@@ -84,6 +76,8 @@ int main()
 
         int massOrVolume;
 
+        int wrongValueCheck = 0;
+
         for (int i = 0; i < numberOfBodies; i++)
         {
             cout << "Press 1 to enter body volume or 2 to enter body mass: ";
@@ -96,13 +90,18 @@ int main()
             {
                 cout << "Enter a volume ";
                 cin >> bodyVolume;
+
+                array[i] = ArchimedeanFormulaFirstWay(dentisty, bodyVolume);
                 sum = sum + ArchimedeanFormulaFirstWay(dentisty, bodyVolume);
+
                 break;
             }
             case 2:
             {
                 cout << "Enter body mass ";
                 cin >> mass;
+
+                array[i] = ArchimedeanFormulaSecondWay(mass);
                 sum = sum + ArchimedeanFormulaSecondWay(mass);
                 break;
 
@@ -110,13 +109,157 @@ int main()
             default:
             {
                 cout << "Incorrect input!";
+                wrongValueCheck = 1;
                 break;
             }
             }
 
+            if (wrongValueCheck == 1)
+            {
+                break;
+            }
         }
 
-        cout << "The thrust force is equal to: " << sum;
+
+        if (wrongValueCheck != 1)
+        {
+            for (int i = 0; i < numberOfBodies; i++)
+            {
+                cout << "Body " << i << ". Archimedean force - ";
+                cout << array[i + 1] << endl;
+            }
+            cout << "The thrust force is equal to: " << sum;
+        }
 
     }
 }
+/*
+#include <iostream>
+
+        using namespace std;
+
+
+
+    float ArchimedeanFormulaFirstWay(float p, float V)
+    {
+        float F;
+        float g = 10;
+
+        F = p * V * g;
+
+        return F;
+    }
+
+
+    float ArchimedeanFormulaSecondWay(float m)
+    {
+        float F;
+        float g = 10;
+
+        F = m * g;
+
+        return F;
+    }
+
+
+
+    int main()
+    {
+        int array[100];
+
+        float dentisty;
+        float sum = 0;
+        float bodyVolume;
+        float mass;
+
+
+
+        cout << "The power of Archimedes." << endl << endl;
+        cout << "Calculate the force of pushing a body into a liquid by writing the volume of the body and choosing the liquid." << endl << endl;
+
+        cout << "Choose a liquid:" << endl;
+
+        cout << "1 Water" << endl;
+        cout << "2 Sea water" << endl;
+        cout << "3 Oil" << endl;
+        cout << "4 Gasoline" << endl;
+        cout << "5 Mercury" << endl;
+        cout << "6 Methanol" << endl;
+
+        int selectedLiquid;
+        cin >> selectedLiquid;
+
+
+
+        switch (selectedLiquid)
+        {
+        case 1: dentisty = 1000;
+            break;
+        case 2: dentisty = 1025;
+            break;
+        case 3: dentisty = 1002;
+            break;
+        case 4: dentisty = 920;
+            break;
+        case 5: dentisty = 13580;
+            break;
+        case 6:dentisty = 791;
+            break;
+        default:break;
+        }
+
+        if (selectedLiquid > 6 || selectedLiquid < 1)
+        {
+            cout << "Incorrect input";
+        }
+        else
+        {
+            cout << "How many bodies ";
+            int numberOfBodies;
+            cin >> numberOfBodies;
+
+            int massOrVolume;
+
+            for (int i = 0; i < numberOfBodies; i++)
+            {
+                cout << "Press 1 to enter body volume or 2 to enter body mass: ";
+                cin >> massOrVolume;
+
+
+                switch (massOrVolume)
+                {
+                case 1:
+                {
+                    cout << "Enter a volume ";
+                    cin >> bodyVolume;
+
+                    sum = sum + ArchimedeanFormulaFirstWay(dentisty, bodyVolume);
+                    array[i] = ArchimedeanFormulaFirstWay(dentisty, bodyVolume);
+                    break;
+                }
+                case 2:
+                {
+                    cout << "Enter body mass ";
+                    cin >> mass;
+
+                    sum = sum + ArchimedeanFormulaSecondWay(mass);
+                    array[i] = ArchimedeanFormulaSecondWay(mass);
+                    break;
+
+                }
+                default:
+                {
+                    cout << "Incorrect input!";
+                    break;
+                }
+                }
+
+            }
+
+
+            for (int i = 0)
+                cout << "The thrust force is equal to: " << sum;
+
+        }
+    }
+*/
