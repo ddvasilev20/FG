@@ -42,4 +42,19 @@ int main()
             break;
         default:break;
         }
+        
+        if (selectedLiquid > 6 || selectedLiquid < 1)
+        {
+            cout << "Incorrect input";
+        }
+        else
+        {
+            cout << "How many bodies ";
+            int numberOfBodies;
+            cin >> numberOfBodies;
+
+            int massOrVolume;
+
+            int wrongValueCheck = 0 ;
+            
 }
