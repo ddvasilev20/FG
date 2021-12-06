@@ -56,6 +56,47 @@ int main()
             int massOrVolume;
 
             int wrongValueCheck = 0 ;
+            
+            for (int i = 0; i < numberOfBodies; i++)
+            {
+                cout << "Press 1 to enter body volume or 2 to enter body mass: ";
+                cin >> massOrVolume;
+
+
+                switch (massOrVolume)
+                {
+                case 1:
+                {
+                    cout << "Enter a volume ";
+                    cin >> bodyVolume;
+
+                    array[i] = ArchimedeanFormulaFirstWay(dentisty, bodyVolume);
+                    sum = sum + ArchimedeanFormulaFirstWay(dentisty, bodyVolume);
+
+                    break;
+                }
+                case 2:
+                {
+                    cout << "Enter body mass ";
+                    cin >> mass;
+
+                    array[i] = ArchimedeanFormulaSecondWay(mass);
+                    sum = sum + ArchimedeanFormulaSecondWay(mass);
+                    break;
+
+                }
+                default:
+                    {
+                        cout << "Incorrect input!";
+                        wrongValueCheck = 1;
+                        break;
+                    }
+                }
+
+                if (wrongValueCheck == 1)
+                {
+                    break;
+                }
           }
             
 }
